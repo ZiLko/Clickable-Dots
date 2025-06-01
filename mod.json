@@ -20,7 +20,7 @@
 	"name": "Clickable Dots",
 	"version": "v1.0.0",
 	"developer": "Zilko",
-	"description": "Lets you click these page dots,",
+	"description": "Lets you click these page dots",
 	"settings": {
 		"disable": {
 			"name": "Disable",
