@@ -1,0 +1,38 @@
+{
+	"geode": "4.5.0",
+	"gd": {
+		"win": "2.2074",
+		"android": "2.2074",
+		"mac": "2.2074",
+		"ios": "2.2074"
+	},
+	"id": "zilko.clickable_dots",
+	"links": {
+		"source": "https://github.com/ZiLko/Clickable-Dots"
+	},
+	"tags": [
+		"editor",
+		"enhancement",
+		"interface",
+		"utility",
+		"bugfix"
+	],
+	"name": "Clickable Dots",
+	"version": "v1.0.0",
+	"developer": "Zilko",
+	"description": "Lets you click these page dots,",
+	"settings": {
+		"disable": {
+			"name": "Disable",
+			"description": "Disables the mod.",
+			"type": "bool",
+			"default": false
+		},
+		"fix-position": {
+			"name": "Fix Dots Position",
+			"description": "Fixes dots going off-screen when theres too many pages.",
+			"type": "bool",
+			"default": true
+		}
+	}
+}
