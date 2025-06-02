@@ -6,12 +6,20 @@ class $modify(ProBoomScrollLayer, BoomScrollLayer) {
 
     struct Fields {
         std::unordered_map<CCSprite*, CCMenuItemSpriteExtra*> m_buttons;
+
+        int m_currentPage = 0;
     };
 
     void onDot(CCObject* sender) {
         int page = static_cast<CCNode*>(sender)->getTag();
 
-        LevelEditorLayer::get() || GameManager::get()->getGameVariable("0168") 
+        auto f = m_fields.self();
+
+        if (page == f->m_currentPage) return;
+
+        instantMoveToPage(page + (page > f->m_currentPage ? -1 : 1));
+
+        LevelEditorLayer::get() || GameManager::get()->getGameVariable("0168")
             ? instantMoveToPage(page)
             : moveToPage(page); 
     }
@@ -36,8 +44,12 @@ class $modify(ProBoomScrollLayer, BoomScrollLayer) {
 
         auto f = m_fields.self();
 
+        int page = 0;
+
         for (CCSprite* dot : dots) {
             if (!f->m_buttons.contains(dot)) continue;
+
+            page++;
 
             dot->setVisible(false);
 
@@ -47,6 +59,9 @@ class $modify(ProBoomScrollLayer, BoomScrollLayer) {
             btn->setPosition(dot->getPosition());
             spr->setScale(dot->getScale());
             spr->setColor(dot->getColor());
+
+            if (dot->getColor() == ccc3(255, 255, 255))
+                f->m_currentPage = page;
         }
     }
 
