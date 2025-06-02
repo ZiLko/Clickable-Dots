@@ -49,8 +49,6 @@ class $modify(ProBoomScrollLayer, BoomScrollLayer) {
         for (CCSprite* dot : dots) {
             if (!f->m_buttons.contains(dot)) continue;
 
-            page++;
-
             dot->setVisible(false);
 
             CCMenuItemSpriteExtra* btn = f->m_buttons.at(dot);
@@ -62,6 +60,8 @@ class $modify(ProBoomScrollLayer, BoomScrollLayer) {
 
             if (dot->getColor() == ccc3(255, 255, 255))
                 f->m_currentPage = page;
+            
+            page++;
         }
     }
 
