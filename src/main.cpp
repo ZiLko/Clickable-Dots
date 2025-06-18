@@ -25,7 +25,7 @@ class $modify(ProBoomScrollLayer, BoomScrollLayer) {
 
         LevelEditorLayer::get() || GameManager::get()->getGameVariable("0168")
             ? instantMoveToPage(page)
-            : moveToPage(page); 
+            : moveToPage(page);
     }
 
     void updateButtons() {
@@ -67,8 +67,9 @@ class $modify(ProBoomScrollLayer, BoomScrollLayer) {
             CCMenuItemSpriteExtra* btn = f->m_buttons.at(dot);
             CCSprite* spr = static_cast<CCSprite*>(btn->getNormalImage());
 
-            if (f->m_disable) {
+            if (f->m_disable || getParent()->getChildByID("dasshu.better-gauntlets/page-navigation")) {
                 btn->setVisible(false);
+                f->m_disable = true;
                 continue;
             }
 
@@ -78,7 +79,7 @@ class $modify(ProBoomScrollLayer, BoomScrollLayer) {
 
             if (dot->getColor() == ccc3(255, 255, 255))
                 f->m_currentPage = page;
-            
+
             page++;
         }
     }
@@ -122,10 +123,14 @@ class $modify(ProBoomScrollLayer, BoomScrollLayer) {
         CCMenu* menu = CCMenu::create();
         menu->setPosition({0, 0});
         menu->setID("buttons-menu"_spr);
-        
+
         addChild(menu);
 
         addButtons();
+
+        Loader::get()->queueInMainThread([this] {
+            updateButtons();
+        });
 
         return true;
     }

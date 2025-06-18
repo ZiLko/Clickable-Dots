@@ -1,3 +1,7 @@
+# 1.0.4
+
+* Fixed incompat with Better Gauntlets.
+
 # 1.0.3
 
 * Fix bug in garage layer
