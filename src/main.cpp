@@ -67,11 +67,12 @@ class $modify(ProBoomScrollLayer, BoomScrollLayer) {
             CCMenuItemSpriteExtra* btn = f->m_buttons.at(dot);
             CCSprite* spr = static_cast<CCSprite*>(btn->getNormalImage());
 
-            if (f->m_disable || getParent()->getChildByID("dasshu.better-gauntlets/page-navigation")) {
-                btn->setVisible(false);
-                f->m_disable = true;
-                continue;
-            }
+            if (CCNode* parent = getParent())
+                if (f->m_disable || parent->getChildByID("dasshu.better-gauntlets/page-navigation")) {
+                    btn->setVisible(false);
+                    f->m_disable = true;
+                    continue;
+                }
 
             btn->setPosition(dot->getPosition());
             spr->setScale(dot->getScale());
@@ -128,9 +129,9 @@ class $modify(ProBoomScrollLayer, BoomScrollLayer) {
 
         addButtons();
 
-        Loader::get()->queueInMainThread([this] {
-            updateButtons();
-        });
+        // Loader::get()->queueInMainThread([this] {
+        //     updateButtons();
+        // });
 
         return true;
     }

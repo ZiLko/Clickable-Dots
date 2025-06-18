@@ -1,3 +1,7 @@
+# 1.0.5
+
+* Fix crash
+
 # 1.0.4
 
 * Fixed incompat with Better Gauntlets.
